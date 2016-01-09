@@ -1,4 +1,6 @@
-﻿/** --- MODULES --- **/
+﻿'uses strict'
+
+/** --- MODULES --- **/
 var http = require('http'),
     session = require('express-session'),
     errorHandler = require('errorhandler'),
@@ -12,35 +14,28 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
-
 var app = express();
 
 /** --- CONFIGURATION --- **/
 
-/* Développement web avec Node.js, Express.js, Jade et MongoDB 7 MARS 2015 GEEG */
+/* Développement web avec Node.js, Express.js, Jade et MongoDB 7 MARS 2015 GEEG 
 var accessLogStream = fs.createWriteStream(__dirname + '/access.log', { flags: 'a' });
-app.use(logger('combined', { stream: accessLogStream }));
+app.use(logger('combined', { stream: accessLogStream }));*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-//
 app.set('port', process.env.PORT || appData.port);
 app.set('views', __dirname + '/views');
-app.set('public', __dirname + '/public');
-app.set('view engine', 'jade');
+//app.set('public', __dirname + '/public');
 app.set('env', 'development');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(cookieParser());
 app.use(session({ secret: 'abitbol', resave: true, saveUninitialized: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/favicon4.ico'));
-
 app.engine('html', require('ejs').renderFile);  //A+ pas besoin de l'extention .ejs , .html suffit !
-//app.use(express.static(path.join(__dirname, 'public')));
 
 /** --- ROUTES --- **/
 var routes = require('./routes/index');
@@ -60,7 +55,6 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
-
 
 /** --- SERVEUR --- **/
 if (app.get('env') === 'dev') {
@@ -106,10 +100,6 @@ var server = http.createServer(app).listen(port, host, function () {
 
 // Chargement de socket.io
 var io = require('socket.io').listen(server);
-var fs = require('fs');
-
-
-//var phrases_fr = require('./data/large_phrases.js')
 
 var data;
 var tok;
@@ -164,7 +154,7 @@ io.sockets.on('connection', function (socket) {
     
     //Attach a 'disconnect' event handler to the socket
     socket.on('disconnect', function () {
-        console.log('user disconnected');
+        console.log('Un client ce déconnecte !');
     });
 });
 
