@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="2c22a409-72aa-40ac-8542-acc8d97da6f0" kpf_version="5" name="MyProject.komodoproject">
+<preference-set idref="2c22a409-72aa-40ac-8542-acc8d97da6f0" id="project" preftype="project">
+  <boolean id="editRestoreFoldPoints">1</boolean>
+  <boolean id="editShowMinimap">1</boolean>
+  <boolean id="editUseEdge">1</boolean>
+  <long id="editWrapType">1</long>
+  <string id="nodejsDefaultInterpreter">c:\program files (x86)\nodejs\node.exe</string>
+</preference-set>
+</project>

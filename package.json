@@ -1,0 +1,29 @@
+{
+  "name": "ExpressApp-VS2015",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "description": "ExpressApp-VS2015",
+  "author": {
+    "name": "Philippe",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "~1.8.1",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.0.0",
+    "ejs": "^2.3.1",
+    "errorhandler": "^1.3.6",
+    "express": "~4.9.0",
+    "express-session": "^1.11.2",
+    "jade": "~1.6.0",
+    "morgan": "~1.3.0",
+    "pos": "^0.1.9",
+    "retext-pos": "^0.2.1",
+    "serve-favicon": "~2.1.3",
+    "socket.io": "^1.3.5",
+    "underscore": "^1.8.3"
+  }
+}
