@@ -170,7 +170,6 @@ io.sockets.on('connection', function (socket) {
     // Quand le serveur reçoit un signal de type "message" du client    
     socket.on('message', function (message) {
         console.log('Un client me parle ! Il me dit : ' + message);
-        socket.emit('message-backend', message.toUpperCase(), { 'id': c_id });
     });
     
     // Quand le serveur ...
