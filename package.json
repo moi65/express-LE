@@ -1,11 +1,11 @@
 {
-  "name": "ExpressApp-0",
+  "name": "express-le",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
-  "description": "ExpressApp-0",
+  "description": "Express App LE",
   "author": {
     "name": "Philippe",
     "email": ""
