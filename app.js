@@ -39,7 +39,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 app.use(express.static(__dirname + '/public'));
-app.use(favicon(__dirname + '/public/favicon.ico'));
+//app.use(favicon(__dirname + '/public/favicon.ico'));
 app.engine('html', require('ejs').renderFile); //A+ pas besoin de l'extention .ejs , .html suffit !
 
 /** --- ROUTES --- **/
