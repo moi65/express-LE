@@ -1,0 +1,324 @@
+<!-- Filename: public/index.html -->
+<html class='full'>
+  <head>
+    <title>Ajax</title>
+	 <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<!-- Bootstrap 4 alpha CSS -->
+	<!-- IMPORTANT: Don't use this .css file in production. Use Bootstrap 3 until Bootstrap 4.0.0 is released. -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.5.0/css/font-awesome.min.css"> </head>
+<!-- Styles -->
+	<style scoped>
+		body {
+			margin-top: 95px;
+			margin-bottom: -55px;
+			background: none;
+		}
+				
+		.opaque {
+			background-color: #F9FCF6;
+		}
+		
+		nav {
+			background-color: #6f5499;
+		}
+		
+		</style>
+
+   
+  </head>
+  <body>
+	  
+	  
+	  <!-- ===========================================================================
+
+============================================================================ -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8">
+
+       8
+     
+      </div>
+      <!-- /col -->
+      <div class="col-xl-4">
+        
+      4
+      </div>
+      <!-- /col -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+
+   <div class="container">
+        <h1>Hello, Tiny Lisa!</h1>
+    
+        <!-- Standard button -->
+        <button id=btn-099 type="button" class="btn btn-default">Default</button>
+
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button id=btn-1 type="button" class="btn btn-primary">Ajax</button>
+
+        <!-- Indicates a successful or positive action -->
+        <button id=btn-222 type="button" class="btn btn-success">Talk</button>
+
+        <!-- Contextual button for informational alert messages -->
+        <button id=btn-3 type="button" class="btn btn-info">Info DB</button>
+
+        <!-- Indicates caution should be taken with this action -->
+        <button id=btn-4 type="button" class="btn btn-warning">Load tags Ajax</button>
+
+        <!-- Indicates a dangerous or potentially negative action -->
+        <button id=btn-5 type="button" class="btn btn-danger">func 5</button>
+
+        <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+        <button id=btn-6 type="button" class="btn btn-link">func 6</button>
+
+        <div class="row">
+            <div class="col-md-8">.col-md-8
+                <br>
+                <div class="col-sm-5 col-md-4 col-lg-3">
+                    <select name="view[controls][records][0][columns][controls_otm_single_id]" class="chosen-select form-control" data-placeholder="Select" style="display: none;">
+                        <option value="NULL"></option>
+                        <option value="1" selected="selected">one</option>
+                        <option value="2">two</option>
+                        <option value="3">three</option>
+                    </select>
+                    <div class="chosen-container chosen-container-single" style="width: 100%;" title=""><a class="chosen-single chosen-single-with-deselect" tabindex="-1"><span>two</span><abbr class="search-choice-close"></abbr><div><b></b></div></a>
+                        <div class="chosen-drop">
+                            <div class="chosen-search">
+                                <input type="text" autocomplete="off">
+                            </div>
+                            <ul class="chosen-results">
+                                <li class="active-result" data-option-array-index="1">one</li>
+                                <li class="active-result result-selected" data-option-array-index="2">two</li>
+                                <li class="active-result" data-option-array-index="3">three</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">.col-md-4
+                <p id=info>...</p>
+                <p class="alert alert-success"><i class="fa fa-info-circle"></i> The font path is relative from your compiled CSS directory.</p>
+                <p id=demo>...</p>
+                <h2 class="page-header">EASIEST: <a href="http://www.bootstrapcdn.com/#fontawesome_tab">BootstrapCDN</a> by <a href="http://maxcdn.com">MaxCDN</a></h2>
+                <hr>
+                <h1>DB X</h1>
+                <a href="/">
+                    <span class="glyphicon glyphicon-home"></span>
+                    <i class="fa fa-home"></i>
+                    <i class="fa fa-home fa-3x"></i>
+                    Home
+                </a>
+                <div id=data>...</div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /container -->
+
+
+
+
+     
+	  
+   
+	
+	  
+  <!-- JavaScript
+    ================================================== -->
+  <!-- jQuery  -->
+  <script src="https://cdn.jsdelivr.net/jquery/2.2.1/jquery.min.js"></script>
+	  <!-- Tether plugin, needed for tooltip plugin -->
+  <script src="https://cdn.rawgit.com/HubSpot/tether/master/dist/js/tether.min.js"></script>
+	 <!-- Bootstrap 4 Alpha JS -->
+  <!-- IMPORTANT: Don't use this .js file in production. Use Bootstrap 3 until Bootstrap 4.0.0 is released. -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+
+   <!-- Local  JavaScript -->
+        <script>
+            'use strict';
+
+            function w(msg) {
+                console.log(msg);
+            }
+
+            function _alert(msg) {
+                w(msg);
+            }
+
+
+             // ====================================
+
+            $(document).ready(function () {
+
+                console.log("La version de JQuery est la " + $.fn.jquery);
+
+
+                // ====================================
+
+                // ====================================
+
+                w("__Start ... ________");
+
+                //============================================================================
+
+                $('#btn-0').on("click", function () {
+                    w("__btn-0________");
+                              
+
+                });
+
+
+                // btn 1 : Ajax   OK!
+                $('#btn-1').on("click", function () {
+                    w("__btn-1________");
+
+                    var abc = "ABC"; //$('#myname').val();
+
+                    $.ajax({
+                        url: "http://localhost:8000/users/ajax-1",
+            dataType: 'json',
+                        type: "post",
+                        data: {
+                            name: abc,
+                            age: 11
+                        }
+                    })
+                        .success(function (response) {
+                            console.log(response);
+                            $("#data").html(response.message + "  " + response.nom + " " + response.age);
+                        })
+                        .error(function () {
+                            console.log("Error from AJAX");
+                        })
+                });
+
+                // btn 2
+                $('#btn-2').on("click", function () {
+                    w("__btn-2________");
+                  
+                });
+
+                // btn 3
+                $('#btn-3').on("click", function () {
+                    w("__btn-3________");
+
+                    var abc = "moi65"; //$('#myname').val();
+
+                    $.ajax({
+                        url: "http://localhost:8000/users/ajax_db",
+                        type: "post",
+                        data: {
+                            name: abc,
+                            age: 11
+                        }
+                    })
+                        .success(function (response) {
+                            console.log("RESPONSE:",response);
+                            $("#data").html(response.data);
+
+                        })
+                        .error(function () {
+                            console.log("Error from AJAX");
+                        })
+
+                });
+
+                // btn 4 -- tags ajax
+                $('#btn-4').on("click", function () {
+                    w("__btn-4________");
+
+                    $.ajax({
+                        url: "http://localhost:8000/users/ajax_tags",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                              someObject: 'Nodejs and Expressjs sending ajax post request'
+                        },
+                        cache: false,
+                        complete: function () {
+                            //called when complete
+                            console.log('process complete');
+                        },
+                        success: function (data) {
+                            console.log(data.age, data.nom, data.message);
+                            console.log('process sucess');
+              $("#data").html('<h2>Age:'+ data.age+'<br>Nom:'+data.nom+'<br>Message:'+data.message +'</h2>');
+                        },
+                        error: function () {
+                            console.log('process error');
+                        },
+                    });
+                });
+
+                $('#btn-5').on("click", function () {
+                    w("__btn-5________");
+
+           $.ajax({
+                        url: "http://localhost:8000/users/simple-cors",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                              someObject: 'Amplificateurs opérationnels Quad 1 MHz SOIC-14, TL064CDR, Texas Instruments'
+                        },
+                        cache: false,
+                        complete: function () {
+                            //called when complete
+                            console.log('process complete');
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            console.log('process sucess');
+              $("#data").html('<h4>'+ data.text +'</h4>');
+                        },
+                        error: function () {
+                            console.log('process error');
+                        },
+                    });
+
+
+                });
+
+                $('#btn-6').on("click", function () {
+                    w("__btn-6________");
+
+
+                });
+
+
+            });
+        </script>
+
+
+
+
+  <script>
+    jQuery(document).ready(function($) {
+		
+		$('#btn-0').click(function() {
+			
+   
+       });
+
+   		
+	$('.row').each(function(){
+		  var wellHeight=0
+		  $(this).find('.well').each( function(){
+			  var temp = $(this).height()
+			  if (temp>wellHeight){
+			   wellHeight=temp
+			  }
+		  }).height(wellHeight+"px")
+		})
+	
+    });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,241 @@
+<!-- Filename: public/index.html -->
+<html class='full'>
+  <head>
+    <title>Hear It</title>
+	 <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<!-- Bootstrap 4 alpha CSS -->
+	<!-- IMPORTANT: Don't use this .css file in production. Use Bootstrap 3 until Bootstrap 4.0.0 is released. -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.5.0/css/font-awesome.min.css"> </head>
+<!-- Styles -->
+	<style scoped>
+		body {
+			margin-top: 95px;
+			margin-bottom: -55px;
+			background: none;
+		}
+		
+		.full {
+			background: url(/img/world.png) no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+		
+		.opaque {
+			background-color: #F9FCF6;
+		}
+		
+		nav {
+			background-color: #6f5499;
+		}
+		
+		.jumbotron {
+			position: relative;
+			background: #000 url(../world.svg) center center;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			overflow: hidden;
+			/*visibility: hidden;  cache seuelement l'élément  */
+			display: none;   /* cache et  supprime la place prise par l'élément */
+		}
+	</style>
+
+    <!--<script src="hearit.js"></script>-->
+  </head>
+  <body>
+	  
+	  
+	  <!-- ===========================================================================
+
+ Autocomplete
+
+============================================================================ -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8">
+
+        <div class="card">
+          <div class="card-block">
+
+            <div class="col-xl-6">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">... the card's content.</p>
+            </div>
+            <div class="col-xl-6">
+              <h5 class="demoHeaders">Autocomplete</h5>
+              <div id="result" class="ui-widget">....</div>
+              <div id="state" class="ui-widget">....</div>
+            </div>
+            <section>
+              <div class="span-input">
+                <label for="autocomplete">Type a text:</label>
+                <input class="" id="autocomplete" size="80" maxlength="120">
+              </div>
+            </section>
+
+            <br />
+
+            <section>
+
+              <p>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Keyboard help
+  </a>
+
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-block">
+
+                  <article>
+                    <h3>Keyboard interaction</h3>
+
+                    <p>When the menu is open, the following key commands are available:</p>
+
+                    <ul>
+                      <li><code>UP</code>: Move focus to the previous item. If on first item, move focus to the input. If on the input, move focus to last item.</li>
+                      <li><code>DOWN</code>: Move focus to the next item. If on last item, move focus to the input. If on the input, move focus to the first item.</li>
+                      <li><code>ESCAPE</code>: Close the menu.</li>
+                      <li><code>ENTER</code>: Select the currently focused item and close the menu.</li>
+                      <li><code>TAB</code>: Select the currently focused item, close the menu, and move focus to the next focusable element.</li>
+                      <li><code>PAGE UP</code>/<code>PAGE DOWN</code>: Scroll through a page of items (based on height of menu).&nbsp;<em>It&#39;s generally a bad idea to display so many items that users need to page.</em></li>
+                    </ul>
+                    <details>
+                      <summary>When the menu is closed, the following key commands are available:</summary>
+                      <ul>
+                        <li><code>UP</code>/<code>DOWN</code>: Open the menu, if the&nbsp;<a href="http://api.jqueryui.com/autocomplete/#option-minLength"><code>minLength</code></a>&nbsp;has been met.</li>
+                      </ul>
+                    </details>
+
+                  </article>
+
+                </div>
+              </div>
+
+            </section>
+
+
+            <a href="#" id="btn-0" class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+      <!-- /col -->
+      <div class="col-xl-4">
+        <div class="card card-inverse bg-inverse">
+          <div class="card-block">
+            <h3 class="card-title card-text">"Que puis-je dire?"</h3>
+            <p class="card-text">Lorsque l'entrée de la parole est activée, il est important d'aider les utilisateurs à découvrir exactement ce qui peut être compris et quelles actions peuvent être effectuées.</p>
+
+            <p id="message" class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-secondary-outline">Outline</a>
+          </div>
+        </div>
+      </div>
+      <!-- /col -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+
+	  
+    <div style="float:right">
+      Score: {{score}}
+      <audio controls preload="auto" id="audio">
+        <source id="wavsource" type="audio/wav">
+      </audio>
+    </div>
+
+    <h2>Hear It</h2>
+   <!-- <img src="/img/emmi.jpg">-->
+    <div style="clear:both">
+      <div style="float:left; width:250px; height:75px; border:1px solid black; text-align:center;font-size:36pt">{{word}}</div>
+    </div>
+	  
+	  <script>
+	  	var audio = document.getElementById('audio');
+		var wavsource = document.getElementById('wavsource');
+
+		//wavsource.src= '/api/speak?text=Click+on+the+word+'+'solid black';
+       	wavsource.src= '/users/api/speak?text=Playing and Pausing the Music';
+// http://localhost:3000/users/api/speak?text=Playing%20and%20Pausing%20the%20Music
+		audio.load();
+		audio.play(); 
+	  
+	  </script>
+	  
+  <!-- JavaScript
+    ================================================== -->
+  <!-- jQuery  -->
+  <script src="https://cdn.jsdelivr.net/jquery/2.2.1/jquery.min.js"></script>
+	  <!-- Tether plugin, needed for tooltip plugin -->
+  <script src="https://cdn.rawgit.com/HubSpot/tether/master/dist/js/tether.min.js"></script>
+	 <!-- Bootstrap 4 Alpha JS -->
+  <!-- IMPORTANT: Don't use this .js file in production. Use Bootstrap 3 until Bootstrap 4.0.0 is released. -->
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>-->
+  <script>
+    jQuery(document).ready(function($) {
+		
+		$('#btn-0').click(function() {
+				var audio = document.getElementById('audio');
+				var wavsource = document.getElementById('wavsource');
+
+				//wavsource.src= '/api/speak?text=Click+on+the+word+'+'solid black';
+				wavsource.src= '/users/api/speak?text=JavaScript';
+	
+				audio.load();
+				audio.play(); 
+   
+       });
+
+   		
+	$('.row').each(function(){
+		  var wellHeight=0
+		  $(this).find('.well').each( function(){
+			  var temp = $(this).height()
+			  if (temp>wellHeight){
+			   wellHeight=temp
+			  }
+		  }).height(wellHeight+"px")
+		})
+	
+    });
+  </script>
+  </body>
+</html>
+<!--
+<audio controls>
+  <source src="http://localhost:8080/api/speak/?text=Click+on+the+word" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+
+ <audio id="beep" src="audio source file" preload="auto" ></audio>
+
+    <script>
+        function playBeep() {
+           document.getElementById("beep").play();
+        }
+        playBeep();
+    </script>
+
+
+#121212
+#2f76bb
+#a9a9a9
+#333333
+#999999
+#f9f9f9
+#006b5b
+#008571
+#00b29e
+#e0e0e0
+#5a5a5a
+
+
+-->

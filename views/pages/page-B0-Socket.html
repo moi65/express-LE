@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html>
-
-<head>
+<html dir="ltr"><head>
     <meta charset="utf-8">
     <title>
-        <%= title %>
+        &lt;%= title %&gt;
     </title>
-    <meta name="description" content="..." />
+    <meta name="description" content="...">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="/vendor/bootstrap-3.3.4/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/vendor/font-awesome-4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/vendor/bootstrap-3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome-4.3.0/css/font-awesome.min.css">
     <!-- material design -->
-    <link href="/vendor/material/css/material.min.css" rel="stylesheet" />
-    <link href="/vendor/material/css/material-fullpalette.css" rel="stylesheet" />
+    <link href="/vendor/material/css/material.min.css" rel="stylesheet">
+    <link href="/vendor/material/css/material-fullpalette.css" rel="stylesheet">
     <!-- custom CSS -->
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <style>
         #wrapper {
             visibility: hidden;
@@ -24,7 +21,7 @@
     </style>
 </head>
 
-<body>
+<body contenteditable="true">
     <!-- navbar here -->
     <div id="header" class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
@@ -32,7 +29,7 @@
                 <i class="icon-reorder"></i>
             </button>
             <a class="navbar-brand" href="#">
-                <%= title %>
+                &lt;%= title %&gt;
             </a>
         </div>
         <nav class="collapse navbar-collapse">
@@ -69,7 +66,7 @@
                 <div class="live-search">
                     <form role="search" method="get" id="searchform" class="form-search" action="">
                         <div class="input-group">
-                            <input type="text" id="autocomplete-ajax" class="form-control" autocomplete="off" placeholder="Find help! Enter search term here." />
+                            <input type="text" id="autocomplete-ajax" class="form-control" autocomplete="off" placeholder="Find help! Enter search term here.">
                             <span class="input-group-btn">
                                 <input type="text" id="searchsubmit" value="Search" class="btn btn-primary">
                             </span>
@@ -79,7 +76,7 @@
                                 <input type="text" id="poke" value="Poke 0" class="btn btn-primary">
                             </span>
                         <span class="input-group-btn">
-                                <input type="text" id="" value="Poke 1" class="btn btn-primary">
+                                <input type="text" id="_" value="Poke 1" class="btn btn-primary">
                             </span>
 
                     </form>
@@ -94,7 +91,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-sm-3 ">
-                <br />
+                <br>
                 <h1>What is Material Design ?</h1>
                 <p>Material Design is a Design Language that challenges to create a visual language for users that synthesizes the classic principles of good design with the innovation and possibility of technology and science.</p>
             </div>
@@ -102,50 +99,50 @@
                 <div id="msg">...</div>
             </div>
         </div>
+    </div>
+    <!-- ... here -->
+    <div class="container">
 
-        <!-- ... here -->
-        <div class="container">
+        <div class="row">
 
-            <div class="row">
-
-                <div class="col-md-12">
-                    © 2015 Nuance Communications, Inc. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;par moi65
-                </div>
-
+            <div class="col-md-12">
+                Â© 2015 Nuance Communications, Inc. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;par moi65
             </div>
+
         </div>
-        <!-- bootstrap grid example -->
-        <!-- /bootstrap grid example -->
+    </div>
+    <!-- bootstrap grid example -->
+    <!-- /bootstrap grid example -->
 
-        <!--scripts loaded here-->
-        <script src="/vendor/jquery/jquery-2.1.1.min.js"></script>
-        <script src="/vendor/bootstrap-3.3.4/js/bootstrap.min.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="/javascripts/script.js"></script>
-        <!--scripts local here-->
-        <script>
-            'uses strict';
+    <!--scripts loaded here-->
+    <script src="/vendor/jquery/jquery-2.1.1.min.js"></script>
+    <script src="/vendor/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/script.js"></script>
+    <!--scripts local here-->
+    <script>
+        'uses strict';
 
-            var socket = io.connect('http://localhost:3000');
-            const c_id = "UGhpbGlwcGU2NQBv";
+        var socket = io.connect('http://localhost:3000');
+        var c_id = "UGhpbGlwcGU2NQBv";
 
-            socket.emit('message', 'Salut serveur, çà va ?');
+        socket.emit('message', 'Salut serveur, ça va ?');
 
-            socket.on('message-backend', function (message, id) {
-                console.log(id.id, id.id === c_id);
-                $("#msg").html(' <b>Le serveur a un message :</b><br /> ' + message);
-            })
+        socket.on('message-backend', function (message, id) {
+            console.log(id.id, id.id === c_id);
+            $("#msg").html(' <b>Le serveur a un message :</b><br /> ' + message);
+        })
 
-            // btn
-            $('#poke').on('click', function () {
-                socket.emit('message', 'Salut serveur, çà poke ?');
-            })
+        // btn
+        $('#poke').on('click', function () {
+            socket.emit('message', 'Salut serveur, ça poke ?');
+        })
 
-            $('#searchsubmit').on('click', function () {
-                //socket.emit('nina-message', 'How old are you?');
-                console.log($('#autocomplete-ajax').val());
-                socket.emit('nina-message', $('#autocomplete-ajax').val());
-            })
-        </script>
-</body>
-</html>
+        $('#searchsubmit').on('click', function () {
+            //socket.emit('nina-message', 'How old are you?');
+            console.log($('#autocomplete-ajax').val());
+            socket.emit('nina-message', $('#autocomplete-ajax').val());
+        })
+    </script>
+
+</body></html>

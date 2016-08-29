@@ -1,0 +1,16 @@
+.x {
+    background: url(images/Background.png);
+    width: 765px;
+    height: 457px;
+    top: 889px;
+    left: 1033px;
+}
+
+.ma-regle {
+    background: url(images/Layer-1.png);
+    width: 204px;
+    height: 281px;
+    top: 20px;
+    left: 40px;
+    position: absolute;
+}

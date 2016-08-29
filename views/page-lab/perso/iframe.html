@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ifr-base-0</title>
+    <style>
+        #content_iframe {
+            border: thick dotted #D4D4D4;
+            float: left;
+            padding: 8px;
+            margin: 8px;
+        }
+        
+        #BF {
+            border: thin solid #FF8040;
+            height: 800px;
+        }
+        
+        #Btn-F {
+            float: right;
+            z-index: 9999;
+            position: absolute;
+        }
+        
+        .fs-icon {
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAQCAYAAAAbBi9cAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABV0RVh0Q3JlYXRpb24gVGltZQA4LzE2LzEzspl6ugAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAB7SURBVDiN7ZOxCsAgDESvxXyhi5P/Fif/0i6NGJH2KIUufVOUJB45s6lqw0DOGQylFHfeqSqCYEGMESJCF6aUAAC1Vt9IRPolixtDG1DVxjLnhtVL8yAvlZy8Nuy/0T1L19g1cY3Mavupd9bPWL5T9ERJV2SBrcfn238A3whjoYEPESwAAAAASUVORK5CYII=");
+            cursor: pointer;
+            height: 16px;
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            width: 18px;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- - - - - - - - - - - - - - - - - - - - - -->
+
+    <div class="sidebar">
+        <div class="well">
+            <h3>WEBs Pages IFrame</h3>
+            <dl>
+                <dt>
+						<a href="SI.html">test 1</a>
+					</dt>
+                <dt>
+						<a href="http://127.0.0.1:8080/Projet2014/TESTs/foundation5/Getting%20Started%20With%20Foundation/pages/page_1.html">une-iframe.html</a>
+					</dt>
+                <dt>
+						<a href="http://reference.sitepoint.com/css/font/demo">sitepoint</a>
+					</dt>
+                <dt>
+						<a href="http://fluidbaselinegrid.com/" add_date="1370957466" >fluidbaselinegrid.com</a>
+					</dt>
+                <dt>
+						<a href="file:///C:/Users/Philippe/Documents/Node2015-2/NodeJsWebApplication/Data/mer16dec/favoris_16_12_2015.html" add_date="1371899244">Favoris</a>
+					</dt>
+                <dt>
+                 <a href="http://blog.karachicorner.com/2013/03/35-best-responsive-framework-for-web-design/">http://blog.karachicorner.com/2013/03/35-best-responsive-framework-for-web-design/</a>
+                    </dt>
+            </dl>
+        </div>
+        <button id="Btn-1" class="btn btn-default">
+            Say hello
+        </button>
+        <button id="AjaxBtn" class="btn btn-default">
+            Say Ajax
+        </button>
+        <div id='log'>
+            LOG
+        </div>
+        <div id='result'>
+            result
+        </div>
+    </div>
+
+    <div id="BF">
+        <a class="fs-icon" href="#"></a>
+        <iframe id="content_iframe" width="1140" height="680" scrolling="auto" frameborder="0" marginheight="0" marginwidth="0" src="">
+
+            Frames are not supported on your browser. </iframe>
+    </div>
+    <!-- - - - - - - - - - - - - - - - - - - - - -->
+
+    <script>
+        function loadUrl(url) {
+            document.getElementById('iframe').src = url;
+        }
+    </script>
+
+    <iframe id="iframe" src="" width="90%" height="200px"></iframe>
+    <a href="javascript:" class="btn large" onclick="loadUrl('SI.html');">Google Maps</a>
+    <a href="javascript:" class="btn large" onclick="loadUrl('file:///C:\Users\Philippe\Documents\Node2016\Solution2016\Express\express-0\views\page-lab\bootstrap-elements.html');">Page 2</a>
+
+
+    <!-- /iframe -->
+    <!-- =====================================
+		JAVASCRIPT
+		====================================== -->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <!-- - - - - - - - - - - - - - - - - - - - - -->
+
+    <script>
+        $(document).ready(function () {
+
+            function _log(msg) {
+                console.log(msg);
+            }
+
+            function _alert(msg) {
+                _log(msg);
+            }
+
+            $("a").click(function (e) {
+                    e.preventDefault();
+                    /*
+                    var width = $(window).width();
+                    var height = $(window).height();
+
+                    var sb_width = $('.sidebar').width();
+                    var sb_height = $('.sidebar').height();
+
+                    var frame = $("#content_iframe");
+                    frame.attr("width", width - sb_width - 50);
+                    frame.attr("height", sb_height);
+                    */
+                    var adresse = $(this).attr("href");
+
+                    $("#content_iframe").attr("src", adresse);
+
+                    $('#log').text(adresse);
+
+                })
+                //===================================
+
+            // http://jqapi.com/#p=ajaxStart
+            $(document).ajaxStart(function () {
+                $("#log").text("Triggered ajaxStart handler.");
+            });
+
+            // http://jqapi.com/#p=ajaxComplete
+            $(document).ajaxComplete(function () {
+                $("#log").text("Triggered ajaxComplete handler.");
+            });
+
+            $.ajaxSetup({
+                url: "frame-1.php",
+                global: true,
+                cache: false,
+                async: false,
+                type: "POST"
+            });
+
+            $('#Btn-1').on("click", function () {
+
+                _log("click");
+
+                postData = 'comments=[{"cmd":"Load file","value":"VALEUR"},\
+			{"id":"Question","value":"pourquoi ca marche "}]';
+
+                $.ajax({
+                    /*
+                    type : "POST",
+                    url : "frame-1.php",
+
+                    */
+                    dataType: 'json',
+                    data: postData,
+                    success: function (data) {
+                        /**/
+                        var json = data;
+                        $.each(json, function (i, item) {
+                                if (typeof item == 'object') {
+                                    //console.log(item.id + "-" + item.value);
+                                    //klog(item.id + "-" + item.value);
+                                    $('#result').append(item.id + " - " + item.value + "<br />");
+                                } else {
+                                    return false;
+                                }
+                            }) // end $.each() loop
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

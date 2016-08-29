@@ -1,13 +1,9 @@
-﻿var express = require('express');
+var express = require('express');
 var router = express.Router();
 
 /* =====================================
   
    ===================================== */
-
-// ====================================
-// 
-// ====================================
 
 
 /* GET work listing. */
@@ -18,6 +14,7 @@ router.get('/', function (req, res) {
 // tables simples
 router.get('/A2', function (req, res) {
     res.render('./pages/page-1.html', { title: "Page 1" });
+ //  res.render('./pages/microphone-streaming-auto-stop.html', { title: "Page 1"});
 });
 
 router.get('/A1', function (req, res) {
@@ -231,6 +228,16 @@ router.get('/data-json', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(store_json()));
 });
+
+
+// ====================================
+// 
+// ====================================
+
+router.get('/nina', function (req, res) {
+    res.render('./nina-2/nina_index.html', { title: "Nina" });
+});
+
 
 
 module.exports = router;

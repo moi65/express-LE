@@ -1,0 +1,11 @@
+/* Styles go here */
+
+body {
+  padding-top: 80px;
+}
+
+hr {
+    margin-top: 3px;
+    border-top: 1px dashed #B4A5A5;
+    padding-top: 10px;
+}
